@@ -1,0 +1,42 @@
+--Exercice 1
+
+SELECT * FROM film WHERE date_sortie>='1960-01-01';
+SELECT * FROM film WHERE date_sortie<='1960-01-01';
+
+--Exercice 2
+
+UPDATE film SET description = 'Je change la description' WHERE `id` = 35;
+
+--Exercice 3
+
+INSERT INTO `film` (`id`, `titre`, `slug`, `image`, `prix`, `description`, `date_sortie`) VALUES (NULL, 'Kung Pow', 'kung pow', '19117356kungpow.jpg', '50', 'La légende dit que Bruce Lee a débuté son entraînement à l\'âge de six ans. L\'élu est réputé avoir commencé à l\'entraîner alors qu\'il n\'était encore qu\'un foetus. Quand le légendaire Master Pain, malveillant maître Kung-fu, massacre sa famille, l\'élu entreprend une quête pour venger la mort des siens...\r\n', '2002-07-23');
+
+--Exercice 4
+
+SELECT * FROM commentaire INNER JOIN user ON commentaire.id_user=user.id INNER JOIN film ON commentaire.id_film=film.id WHERE film.id=43;
+
+--Exercice 5
+
+DELETE FROM film WHERE SUBSTR(slug, 1, 1) = 't';
+
+--Exercice 6
+
+SELECT DISTINCT user.*, commentaire.* FROM user INNER JOIN commentaire ON user.id = commentaire.id_user;
+
+--Exercice 7
+
+SELECT * FROM film INNER JOIN  films_categs ON film.id = films_categs.id_film WHERE  id_categorie=51;
+
+--Exercice 8
+ 
+SELECT AVG(note) FROM commentaire 
+
+--Exercice 9
+
+SELECT titre FROM film 
+WHERE date_sortie LIKE '1%-06-%%'
+
+--Exercice 10
+
+SELECT DISTINCT u.id, u.login, u.email, u.avatar, u.role FROM user u INNER JOIN commentaire c ON u.id = c.id_user WHERE u.role = 1;
+
